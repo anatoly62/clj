@@ -1,0 +1,130 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>		
+
+<script src="clj.js"></script>
+<script>
+
+console.log(vec(distinct(map(inc,filter(isOdd,[1,2,3,3,3,3,4,5,3,6])))));
+console.log(vec(take(4,cycle([1,2,3]))));
+console.log(vec(take(5,iterate(inc,5))));
+//console.log(vec(take(5,iterate(partial(add,2),0))));
+//console.log(vec(take(4,range())));
+//console.log(vec(take(6,range(10,0,-2))));
+//console.log(conj([1,2,3],4));
+
+//console.log([{id:1,name:"Any"},{id:2,name:"Tany"}].map(prop("name")));
+//console.log(map(partial(add, 1),[1,2,3]));
+/*
+var gr=comp(partial(add, 1),partial(add, 2));
+console.log(map(gr,[1,2,3]));
+console.log(map(add,[1,2,3],[4,5,6],[7,8,9]));
+*/
+
+console.log(apply(mapv, vector, [[1,2,3],[4,5,6]]));
+//console.log(transduce(comp(takeT(5), partitionAllT(2)), append, [1,2,3,4,5,6]))
+//console.log(transduce(comp(filterT(isOdd), mapT(inc)), add, [1,2,3,4,5,6]))
+//console.log(transduce(map(partial(add,2)), append, [1,2,3,4,5,6]))
+//console.log(transduce(interposeT(0), add, 3, [1,1,3,5,5,3,6,7]))
+//console.log(reduce( map(inc)(append),[1],[1,2,3]));
+//console.log(into([1],map(inc),[1,2,3]));
+//console.log(sequence(distinct(),[1,"a",1,'a',3]));
+//console.log(dedupe([1,1,"a","a",1,'a',3]));
+//console.log(transduce(map(partial(str,',')),str,"123"));
+//console.log(transduce(interpose(','),str,['1','2','3']));
+//console.log(apply(str,interpose(',',['1','2','3'])));
+//console.log(reduce(function(r,it){return r+it+','},"",['1','2','3']));
+//console.log(reduce(identity(sub),[1,2,3,4]));
+//console.log(transduce(completing,sub,[1,2,3,4]));
+//console.log(vec(mapcat(reverse,[[3,2,1,0],[6,5,4],[9,8,7]])));
+//console.log(sequence(comp(mapcat(reverse),filter(isOdd)),[[3,2,1,0],[6,5,4],[9,8,7]]));
+//console.log(sequence(comp(cat,filter(isOdd)),[[3,2,[1,0]],[6,5,4],[9,8,7]]));
+//console.log(sequence(comp(flatten(),filter(isOdd)),[[3,2,[1,0]],[6,5,4],[9,8,7]]));
+//console.log(vec(take(3,filter(isOdd,[1,2,3,4,5,6,7,8,9]))));
+//console.log(transduce(comp(filter(isOdd),take(3)),conj,[1,2,3,4,5,6,7,8,9]));
+
+//console.log(vec(cons(0,[1,2,3])));
+//console.log(reduce(add,map(inc,[2,3,4])));
+//console.log(reduce(add,cons(1,map(inc,[2,3,4]))));
+//console.log(vec(cons(1,map(inc,[2,3,4]))));
+//console.log(reduce(add,cons(1,[2,3,4])));
+//console.log(reduce(add,1,[2,3,4]))
+//console.log(vec(map(inc,[1,2,3])));
+
+//console.log(vec(list(cons(0,(map(inc,cons(0,[1,2,3])))))));
+//console.log(vec(conj(map(inc,list([1,2,3])),0)));
+//console.log(vec(conj(map(inc,list([1,2,3])),0,1)));
+//console.log(last(cons(0,map(inc,list([])))));
+
+//var tmp=list([1,2]);
+//console.log(rest(tmp));
+//console.log(tmp);
+
+//console.log(apply(str,map(function(it){return str(it,",")},"123")));
+//console.log(nth(map(inc,list([1,2,3])),1));
+//console.log(nth(cons(-1,cons(0,[1,2,3])),3));
+
+//console.log(isNotAny(isOdd,[1,2,3]));
+
+//var v=[{id:1,name:"Ann"},{id:2,name:"Tany"}];
+//console.log(sort("1432"))
+//console.log(sortBy(count,["aaa","bb","c"]));
+//console.log(juxt(prop("a"),prop("b"))({a:1,b:2,c:3,d:4}));
+//console.log(juxt(first,count)("text"));
+//var m={username: "sally",profile:{name: "Sally Clojurian",address :{city: "Austin",state: "TX"}}}; 
+//console.log(getIn(m,["profile","name"]));
+//console.log(getIn(m,["profile","address","city"]));
+//console.log(getIn(m,["profile","address","zip"],"not found"));
+//console.log(assocIn(m,["profile","name"],"Ann Bitch"));
+//console.log(assocIn(m,["profile","address","city"],"Vinnisa"));
+//console.log(m);
+
+
+
+arr=[{name:"James",age: 26},{name: "John",age:43}];
+console.log("assocIn",assocIn(arr,[1,"age"],50));
+console.log("updateIn",updateIn(arr,[1,"age"],add,2));
+console.log("merge",merge({name:"James",age: 26},{id:2,name: "John",age:43},{sex:"m"}))
+console.log("conj",conj({id:1},{name:"Ann"},{surname:"Bitch"}));
+console.log("mergeWith",mergeWith(add,{a:1,b:2},{a:9,b:98,c:0}));
+
+console.log(replace([10,9,8,7,6],[0,2,4]));
+console.log(replace({2: "two", 4: "four"},[4,2,3,4,5,6,2]));
+console.log(groupBy(isOdd,range(10)));
+console.log(groupBy(count,["a", "as", "asd", "aa", "asdf", "qwer"]));
+console.log(frequencies(["a","b","a","a",1,1,0,0,0]));
+console.log(maxKey(count,"asd","bsd","dsd","long word"));
+
+
+
+console.log(vec({a:3,b: 7}));
+console.log(first(apply(maxKey,second,{a: 3, b: 7,c: 9})));
+
+var lst=list(1,2);
+console.log(rest(lst));
+var lv=map(inc,[1,2,3]);
+console.log(mapv(inc,lv));
+console.log(lv);
+
+
+console.log(vec(map(inc,lst)));
+console.log(reduce(add,cons(1,(cons(1,[1,2,3])))));
+console.log(vec(cons(0,partitionAll(3,[1,2,3,4,5,6,7,8]))));
+console.log(reduce(add,map(inc,cons(1,map(inc,cons(1,[1,2,3])))))); 
+console.log(list({id:1,name:"Ann"}));
+
+console.log(rest(cons(0,cons(1,list(2,3,4)))));
+
+
+
+</script>		
+<body>
+<body>
+</html>
